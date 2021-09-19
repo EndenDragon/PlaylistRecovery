@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+        integrity="sha512-usVBAd66/NpVNfBge19gws2j6JZinnca12rAe2l+d+QkLU9fiG02O1X8Q6hepIpr/EYKZvKx/I9WsnujJuOmBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css', t=app_start_stamp) }}">
+
+    <title>PlaylistRecovery</title>
+
+    <meta property="og:title" content="PlaylistRecovery" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://corr.in/" />
+    <meta property="og:description" content="Backup and get notified of when your playlist videos get deleted!" />
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">PlaylistRecovery</span>
+            <div class="d-flex" id="user-corner">
+                <span class="navbar-text">example@gmail.com</span>
+                <a class="btn btn-outline-danger m-1" href="{{ url_for('logout') }}" role="button"
+                    id="logout-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        <div class="p-5 mb-4 bg-light rounded-3" id="loading">
+            <div class="container-fluid py-5">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5 mb-4 bg-light rounded-3" id="welcome">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Backup your YouTube playlist with confidence!</h1>
+                <p class="col-md-8 fs-4">Sign in with Google to start backing up your playlists.</p>
+                <a class="btn btn-lg btn-primary m-1" href="{{ url_for('loginpass.login', name='google') }}"
+                    role="button" id="login-btn">Google Login</a>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true">Recovered</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">Lost</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                    role="tab" aria-controls="contact" aria-selected="false">Playlists</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Video Title <span class="badge bg-danger">New</span></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Playlist: Playlist Name</h6>
+                                <p class="card-text">
+                                    Video Id: jfkjssdljfds<br>
+                                    Recovery Date: December 20, 2020
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h5 class="card-title">Deleted Video <span class="badge bg-danger">New</span></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Playlist: Playlist Name</h6>
+                                <p class="card-text">
+                                    Video Id: jfkjssdljfds<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Enable/Disable Playlists for Recovery</h5>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Example Playlist</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2" checked>
+                            <label class="form-check-label" for="flexSwitchCheckDefault2">Example Playlist</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"
+        integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='script.js', t=app_start_stamp) }}"></script>
+</body>
+
+</html>
